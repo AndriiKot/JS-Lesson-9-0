@@ -16,15 +16,15 @@
       </div>
       
     <script>
-        const buttons = document.querySelectorAll('.w3-button')
+        const links = document.querySelectorAll('.w3-button')
         const handleClick = (event) => {
             console.log('Hand Click!')
             console.log(event.target)  
             console.log(event.currentTarget)
             event.stopPropagation()
         }
-        buttons.forEach(button => {
-            button.addEventListener('click',handleClick)
+        links.forEach(button => {
+            button.addEventListener('click',handleClick);
         })
     </script>
 </body>
