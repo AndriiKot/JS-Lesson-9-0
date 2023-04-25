@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>AddEventListener</title>
+</head>
+<body class="w3-cyan">
+    <div class="w3-container w3-margin w3-black w3-bar">
+        <a href="#" class="w3-bar-item w3-button">Home</a>
+        <a href="#" class="w3-bar-item w3-button">Link <strong>1</strong></a>
+        <a href="#" class="w3-bar-item w3-button">Link <strong>2</strong></a>
+        <a href="#" class="w3-bar-item w3-button">Link <strong>3</strong></a>
+      </div>
+      
+    <script>
+        const buttons = document.querySelectorAll('.w3-button')
+        const handleClick = (event) => {
+            console.log('Hand Click!')
+            console.log(event.target)  
+            console.log(event.currentTarget)
+            event.stopPropagation()
+        }
+        buttons.forEach(button => {
+            button.addEventListener('click',handleClick);
+        })
+
+        buttons.forEach(button => {
+            button.removeEventListener('click',handleClick)
+        })
+    </script>
+</body>
+</html>
