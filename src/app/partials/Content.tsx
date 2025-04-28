@@ -71,6 +71,7 @@ const LinkCloud = ({ links, className }: LinkCloudProps) => {
       direction="column"
       gap={20}
       className={`${className} ${styles.linkCloudWrapper}`}
+      width="100%"
     >
       <span
         style={{
