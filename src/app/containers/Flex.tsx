@@ -9,7 +9,7 @@ interface FlexInterface {
     | "flex-start"
     | "flex-end";
   align?: "center" | "flex-start" | "flex-end" | "normal";
-  width?: string;
+  fullWidth?: boolean;
   fullHeight?: boolean;
   className?: string;
 }
@@ -20,7 +20,7 @@ export default function Flex({
   gap = null,
   justify = "center",
   align = "center",
-  width,
+  fullWidth = false,
   fullHeight = false,
   className = "",
 }: FlexInterface) {
@@ -32,7 +32,7 @@ export default function Flex({
         flexDirection: direction,
         justifyContent: justify,
         alignItems: align,
-        width: width || "auto",
+        width: fullWidth ? "100%" : "auto",
         height: fullHeight ? "100%" : "auto",
         gap: gap ? `${gap}px` : undefined,
       }}
