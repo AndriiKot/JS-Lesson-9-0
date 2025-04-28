@@ -8,7 +8,6 @@ import SearchBar from "@/app/components/SearchBar";
 import Link from "next/link";
 import clsx from "clsx";
 import { useUserAgent } from "@/app/utilsClient";
-import { useEffect, useRef, useState } from "react";
 
 interface HomePageTextInterface {
   className?: string;
@@ -58,7 +57,7 @@ function FloatingLink({ query, href }: FloatingLinkInterface) {
 }
 
 class LinkData {
-  constructor(public query: string, public href: string) { }
+  constructor(public query: string, public href: string) {}
 }
 
 interface LinkCloudProps {
@@ -67,62 +66,11 @@ interface LinkCloudProps {
 }
 
 const LinkCloud = ({ links, className }: LinkCloudProps) => {
-  // Duplicate links to ensure continuous scrolling without gaps
-  const duplicationCount = 4; // Number of times to duplicate the links
-  const duplicatedLinks = Array(duplicationCount).fill(links).flat();
-  const scrollContentRef = useRef<HTMLDivElement>(null);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-
-  // Measure the width of the scroll content
-  useEffect(() => {
-    // Re-measure on window resize
-    const handleResize = () => {
-      if (scrollContentRef.current) {
-        const width = scrollContentRef.current.scrollWidth;
-
-        document.documentElement.style.setProperty('--scroll-distance', `-${width / duplicationCount}px`);
-      }
-    };
-
-    setTimeout(handleResize, 100); // Delay to ensure the DOM is fully loaded
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [links]);
-
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!scrollContentRef.current) return;
-
-    setStartX(e.touches[0].pageX - scrollContentRef.current.offsetLeft);
-    setScrollLeft(scrollContentRef.current.scrollLeft);
-
-    scrollContentRef.current.classList.add(styles.manualScrolling);
-  };
-
-  const handleTouchEnd = () => {
-    if (!scrollContentRef.current) return;
-    
-    scrollContentRef.current.classList.remove(styles.manualScrolling);
-  };
-
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!scrollContentRef.current) return;
-
-    const x = e.touches[0].pageX - scrollContentRef.current.offsetLeft;
-    const walk = (x - startX);
-    scrollContentRef.current.scrollTo({ left: scrollLeft - walk });
-  };
-
-
   return (
     <Flex
       direction="column"
       gap={20}
       className={`${className} ${styles.linkCloudWrapper}`}
-      width="70%"
     >
       <span
         style={{
@@ -131,19 +79,9 @@ const LinkCloud = ({ links, className }: LinkCloudProps) => {
       >
         {"Try it out"}
       </span>
-      <div className={styles.scrollContainer}>
-        <div
-          className={styles.scrollContent}
-          ref={scrollContentRef}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-          onTouchMove={handleTouchMove}
-        >
-          {duplicatedLinks.map((link, index) => (
-            <FloatingLink key={index} query={link.query} href={link.href} />
-          ))}
-        </div>
-      </div>
+      {links.map((link, index) => (
+        <FloatingLink key={index} query={link.query} href={link.href} />
+      ))}
     </Flex>
   );
 };
@@ -175,7 +113,7 @@ export default function Content() {
           maxWidth: "600px",
         }}
         className={styles.searchBar}
-        handleSubmit={() => { }}
+        handleSubmit={() => {}}
         placeholderText={"Ask a health or bioscience question"}
         shouldReanchor={true}
       />

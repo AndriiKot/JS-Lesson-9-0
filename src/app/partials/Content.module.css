@@ -3,15 +3,13 @@
   /* min-height: 100vh; */
   height: 100%;
   width: 100%;
-  z-index: 1;
-  /* Ensure that the content is above the pseudo-element */
+  z-index: 1; /* Ensure that the content is above the pseudo-element */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 5vh;
-  padding-bottom: 20dvh;
-  /* push the content up a bit */
+  padding-bottom: 20dvh; /* push the content up a bit */
   position: relative;
 }
 
@@ -31,8 +29,7 @@
   /* Create a mask that fades to transparent at the edges */
   -webkit-mask-image: radial-gradient(farthest-side, gray 50%, transparent 75%);
   mask-image: radial-gradient(farthest-side, gray 50%, transparent 75%);
-  pointer-events: none;
-  /* Allows clicks to pass through to elements below */
+  pointer-events: none; /* Allows clicks to pass through to elements below */
   z-index: -1;
 }
 
@@ -50,8 +47,7 @@
   margin-bottom: 6vh;
 }
 
-@media (max-width: 854px),
-(max-height: 700px) {
+@media (max-width: 854px), (max-height: 700px) {
   .homePageText {
     font-size: 16px;
   }
@@ -77,28 +73,25 @@
   }
 }
 
+
 /* Phones in landscape mode */
 @media (max-height: 500px) {
   .content {
     padding-top: 90px;
     padding-bottom: 90px;
   }
+
 }
 
 .floatingLink {
   background-color: transparent;
-  width: 428px;
-  /* Set a fixed width, ensure the container can accommodate it */
-  max-width: 100%;
-  /* Ensure it does not exceed the width of its container */
-  text-align: center;
-  /* Align the text to the left */
-  display: block;
-  /* Change to block to take up the full available width */
+  width: 428px; /* Set a fixed width, ensure the container can accommodate it */
+  max-width: 100%; /* Ensure it does not exceed the width of its container */
+  text-align: center; /* Align the text to the left */
+  display: block; /* Change to block to take up the full available width */
   margin-left: auto;
   margin-right: auto;
-  box-sizing: border-box;
-  /* Include padding and border in the width and height */
+  box-sizing: border-box; /* Include padding and border in the width and height */
   color: var(--button-color-one);
   transition: transform 0.3s ease-in-out;
 }
@@ -110,8 +103,7 @@
 
 @media (max-width: 700px) {
   .floatingLink {
-    max-width: 90vw;
-    /* Adjust width to a percentage of the screen size */
+    max-width: 90vw; /* Adjust width to a percentage of the screen size */
     border: 0px;
     font-size: 15px;
     text-align: center;
@@ -130,49 +122,5 @@
 
   .linkCloudWrapper {
     margin-top: 5vh;
-  }
-}
-
-.scrollContainer {
-  width: 70%;
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto;
-}
-
-/* Content that will scroll */
-.scrollContent {
-  display: flex;
-  white-space: nowrap;
-  animation: scrollAnimation 5s linear infinite;
-}
-
-.scrollContent:active {
-  cursor: grabbing;
-  /* Change cursor when actively dragging */
-}
-
-/* Animation for the scrolling effect */
-@keyframes scrollAnimation {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(var(--scroll-distance, -100%));
-  }
-}
-
-@media (max-width: 600px) {
-  .scrollContainer {
-    width: 90%;
-    overflow-x: auto;
-    /* Allow horizontal scrolling on mobile */
-    scrollbar-color: transparent transparent;
-    /* Hide scrollbar */
-  }
-
-  .manualScrolling {
-    animation-play-state: paused;
   }
 }
