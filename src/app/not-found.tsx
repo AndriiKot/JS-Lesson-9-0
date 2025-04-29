@@ -7,8 +7,10 @@ import { useRouter } from "next/navigation";
 import styles from "./NotFoundPage.module.css";
 
 const NotFoundPage: React.FC = () => {
+  const timer = 5;
+  const timerSeconds = timer * 1000;
   const router = useRouter();
-  const [countdown, setCountdown] = useState(3);
+  const [countdown, setCountdown] = useState(timer);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,7 +19,7 @@ const NotFoundPage: React.FC = () => {
 
     const timeout = setTimeout(() => {
       router.replace("/");
-    }, 3000);
+    }, timerSeconds);
 
     return () => {
       clearInterval(interval);
