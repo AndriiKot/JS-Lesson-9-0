@@ -5,21 +5,40 @@
   justify-content: center;
   height: 100vh;
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(to bottom right, #9b59b6, #2980b9);
+  color: #fff;
 }
 
 .not-found h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   margin-bottom: 1rem;
-  color: red;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .not-found p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .not-found a {
-  color: blue;
-  text-decoration: underline;
+  display: block;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  background: linear-gradient(to right, #f1c40f, #e67e22);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.not-found a:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(to right, #e67e22, #f1c40f);
+  color: #fff;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 }

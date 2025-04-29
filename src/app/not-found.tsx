@@ -1,20 +1,29 @@
 'use client';
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import styles from "./NotFoundPage.module.css";
 
 const NotFoundPage: React.FC = () => {
-  const router
   const router = useRouter();
+  const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
-    setTimeout(() => {
+    const interval = setInterval(() => {
+      setCountdown((prevCountdown) => prevCountdown - 1);
+    }, 1000);
+
+    const timeout = setTimeout(() => {
       router.replace("/");
     }, 3000);
-  });
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [router]);
 
   return (
     <>
@@ -22,7 +31,7 @@ const NotFoundPage: React.FC = () => {
         <h1>404 - Page Not Found</h1>
         <p>The requested page does not exist.</p>
         <p>
-          You will be redirected to the <Link href="/">home page</Link> in 3 seconds.
+          You will be redirected to the <Link href="/">home page</Link> in {countdown} second{countdown !== 1 ? 's' : ''}.
         </p>
       </div>
     </>
