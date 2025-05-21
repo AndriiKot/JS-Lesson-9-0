@@ -1,2 +1,6 @@
 
 pnpm create vite webapp --template react-ts
+cd webapp
+pnpm i  or (pnpm install)
+pnpm dev 
+
