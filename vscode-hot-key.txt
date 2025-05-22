@@ -1,0 +1,14 @@
+    Command Pallete:        Ctrl + LeftShift + P       (показывает список горячих клавиш)
+    Go to Definition:       F12                        (показывает где объявлена данная переменная)
+    Go to File:             Ctrl + P                   (навигация по всему проекту но маске)
+    Search Find in Files:   Ctrl + LeftShift + F       (Найти по маски по всему проекту строку (например переменную))
+    Search Replce in Files: Ctrl + LeftShift + H       (Переименовать переменную или строку во всем проекту)
+
+    Transform(Upper case, camel cass, ...)       (Перевод переменной к определённому стилю)
+    File Reavel Active File in Explorer View     (Показывает где по дереву находится файл в котором в данном моменте происзодит редоктироваине)
+
+    Go back
+    Go Forward
+    Rename symbol    F2                          (переименования по всему проекту переменной с импортами и прочими удобствами)
+    Copy line down   LeftShift + Alt + rowDown   (копирования строки на которой находится указатель)
+

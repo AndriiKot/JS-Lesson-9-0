@@ -4,3 +4,12 @@ cd webapp
 pnpm i  or (pnpm install)
 pnpm dev 
 
+
+// App.tsx
+...
+export const App = () => { ... }
+
+// main.tsx
+...
+const { App } from "./App";
+
